@@ -1,0 +1,43 @@
+@import "./vars";
+
+
+//주요 스타일 믹스인
+//font-face 설정
+@mixin fontFace($font-family, $font-weight, $font-style, $font-name) {
+  @font-face {
+    font-family: #{$font-family};
+    font-weight: #{$font-weight};
+    font-style: #{$font-style};
+
+    src: url("../font/#{$font-name}.woff") format("woff"),
+    url("../font/#{$font-name}.otf") format("opentype"),
+      url("../font/#{$font-name}.ttf") format("truetype");
+  }
+}
+
+//공통 폰트 스타일을 설정하는 대신 아래의 믹스인으로 폰트스타일을 작성한다
+//@include fontStyle(폰트사이즈, lineheight 값, font-weight 값) { 스타일 정의 };
+@mixin fontStyle($size, $lineheight, $weight, $color: $gray500) {
+  font-size: $size;
+  line-height: $lineheight;
+  letter-spacing: $size * -0.02;
+  font-weight: $weight;
+  color: $color;
+}
+
+//letter-spacing
+@mixin letterSpacing($fontSize) {
+  letter-spacing: calc($fontSize * -0.01);
+}
+
+// 배경이미지
+//@include backgroundImage(넓이, 높이, image폴더 이후에 파일 경로 ,배경이미지사이즈-기본 cover)  { 스타일 정의 };
+@mixin backgroundImage($width, $height, $file, $bgsize: cover) {
+  width: $width;
+  height: $height;
+  background-image: url("../image/#{$file}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: $bgsize;
+}
+
