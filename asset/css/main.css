@@ -3,6 +3,7 @@
    v5.0.2 | 20191019
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 @import url("/asset/scss/utils/_mixin.scss");
 @import url("/asset/scss/utils/_vars.scss");
 @import url("/asset/scss/utils/_mixin.scss");
@@ -162,10 +163,40 @@ body {
   font-family: "Roboto", "맑은고딕", Arial, sans-serif;
   margin: 0 auto;
 }
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 
 .content {
   height: 100%;
+}
+
+input[type=checkbox] {
+  display: none;
+  margin-right: 8px;
+}
+input[type=checkbox] + label {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 4px;
+  box-sizing: border-box;
+  border-radius: 2px;
+}
+input[type=checkbox]:checked + label:after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  left: -1px;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+  background-image: url("../image/icon/check_fill.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 @keyframes bounce {
@@ -177,6 +208,150 @@ body {
   }
   100% {
     top: -41px;
+  }
+}
+@keyframes move1 {
+  0% {
+    margin-left: -3px;
+    margin-top: -3px;
+  }
+  30% {
+    margin-left: 0px;
+    margin-top: 0;
+  }
+  60% {
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+  100% {
+    margin-left: -3px;
+    margin-top: -3px;
+  }
+}
+@keyframes move2 {
+  0% {
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+  30% {
+    margin-left: 0px;
+    margin-top: 0;
+  }
+  60% {
+    margin-left: -3px;
+    margin-top: -3px;
+  }
+  100% {
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+}
+@keyframes move3 {
+  0% {
+    margin-left: 0px;
+    margin-top: 0;
+  }
+  30% {
+    margin-left: -3px;
+    margin-top: -3px;
+  }
+  60% {
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+  100% {
+    margin-left: 0px;
+    margin-top: 0;
+  }
+}
+@keyframes move4 {
+  0% {
+    margin-left: 0px;
+    margin-top: 0;
+  }
+  20% {
+    margin-left: 3px;
+    margin-top: 3px;
+  }
+  80% {
+    margin-left: -3px;
+    margin-top: -3px;
+  }
+  100% {
+    margin-left: 0px;
+    margin-top: 0;
+  }
+}
+@keyframes move11 {
+  0% {
+    margin-right: -3px;
+    margin-top: -3px;
+  }
+  30% {
+    margin-right: 0px;
+    margin-top: 0;
+  }
+  60% {
+    margin-right: 3px;
+    margin-top: 3px;
+  }
+  100% {
+    margin-right: -3px;
+    margin-top: -3px;
+  }
+}
+@keyframes move12 {
+  0% {
+    margin-right: 3px;
+    margin-top: 3px;
+  }
+  30% {
+    margin-right: 0px;
+    margin-top: 0;
+  }
+  60% {
+    margin-right: -3px;
+    margin-top: -3px;
+  }
+  100% {
+    margin-right: 3px;
+    margin-top: 3px;
+  }
+}
+@keyframes move13 {
+  0% {
+    margin-right: 0px;
+    margin-top: 0;
+  }
+  30% {
+    margin-right: -3px;
+    margin-top: -3px;
+  }
+  60% {
+    margin-right: 3px;
+    margin-top: 3px;
+  }
+  100% {
+    margin-right: 0px;
+    margin-top: 0;
+  }
+}
+@keyframes move14 {
+  0% {
+    margin-right: 0px;
+    margin-top: 0;
+  }
+  20% {
+    margin-right: 3px;
+    margin-top: 3px;
+  }
+  80% {
+    margin-right: -3px;
+    margin-top: -3px;
+  }
+  100% {
+    margin-right: 0px;
+    margin-top: 0;
   }
 }
 @keyframes titleDrop {
@@ -259,8 +434,6 @@ body {
     opacity: 0.5;
   }
 }
-
-
 .dimmed {
   display: none;
   position: absolute;
@@ -274,4 +447,34 @@ body {
   z-index: 900;
 }
 
+#signage-stage {
+  display: flex;
+  width: 19200px;
+  height: 864px;
+}
+
+.panel-a {
+  display: flex;
+  align-items: center;
+  width: 8832px;
+  height: 864px;
+  background: url(/asset/image/weather.png) repeat-x;
+}
+
+.panel-b {
+  display: flex;
+  align-items: center;
+  width: 10368px;
+  height: 864px;
+  background: url(/asset/image/weather.png) repeat-x;
+}
+
+.board-time {
+  display: flex;
+  width: 2133px;
+  height: 679px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.3); /* 반투명 */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Safari */
 }/*# sourceMappingURL=main.css.map */
