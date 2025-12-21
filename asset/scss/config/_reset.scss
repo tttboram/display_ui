@@ -2,8 +2,6 @@
    v5.0.2 | 20191019
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
 
 html,
@@ -148,4 +146,160 @@ a {
 button {
   border:none;
   background: none;
+}
+
+
+/* Roboto Thin */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url("../font/Roboto-Thin.ttf") format("truetype");
+}
+
+/* Roboto ExtraLight */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("../font/Roboto-ExtraLight.ttf") format("truetype");
+}
+
+/* Roboto Light */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../font/Roboto-Light.ttf") format("truetype");
+}
+
+/* Roboto Regular */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../font/Roboto-Regular.ttf") format("truetype");
+}
+
+/* Roboto Medium */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../font/Roboto-Medium.ttf") format("truetype");
+}
+
+/* Roboto SemiBold */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../font/Roboto-SemiBold.ttf") format("truetype");
+}
+
+/* Roboto Bold */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../font/Roboto-Bold.ttf") format("truetype");
+}
+
+/* Roboto ExtraBold */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("../font/Roboto-ExtraBold.ttf") format("truetype");
+}
+
+/* Roboto Black */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("../font/Roboto-Black.ttf") format("truetype");
+}
+
+
+/* Inter */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;          /* ← 가변 범위 */
+  font-stretch: normal;
+  font-display: swap;
+  src: url("../font/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+}
+
+/* Alegreya Sans Thin */
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/AlegreyaSans-Thin.ttf") format("truetype");
+}
+
+/* Alegreya Sans Light */
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/AlegreyaSans-Light.ttf") format("truetype");
+}
+
+/* Alegreya Sans Regular */
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/AlegreyaSans-Regular.ttf") format("truetype");
+}
+
+/* Alegreya Sans Medium */
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/AlegreyaSans-Medium.ttf") format("truetype");
+}
+
+/* Alegreya Sans Bold */
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/AlegreyaSans-Bold.ttf") format("truetype");
+}
+
+/* Alegreya Sans ExtraBold */
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/AlegreyaSans-ExtraBold.ttf") format("truetype");
+}
+
+/* Alegreya Sans Black */
+@font-face {
+  font-family: "Alegreya Sans";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url("../font/AlegreyaSans-Black.ttf") format("truetype");
 }

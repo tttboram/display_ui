@@ -59,13 +59,13 @@
     gap: 50px;
     justify-content: flex-end;
     align-items: baseline;
-    width: 1330px;
+    width: 1500px;
     .clock-hhmm{
       overflow: hidden;
       font-size: 504px;
       font-weight: 600;
       color:#fff;
-      letter-spacing: -0.08em;
+      letter-spacing: -0.03em;
       font-family: "Inter";
       .var{
         line-height: 300px;
@@ -85,7 +85,7 @@
     }
   }
   .board-today{
-    flex: 0 0 700px;
+    flex: 0 0 600px;
     display: flex;
     gap: 40px;
     flex-direction: column;
