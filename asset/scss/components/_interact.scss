@@ -38,6 +38,113 @@ input[type="checkbox"] {
 }
 
 
+.fade-stage{
+  opacity: 0;
+  animation: stageFadeIn 1.2s ease forwards;
+  animation-delay: 7s;
+}
+
+@keyframes stageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+.ani-time {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(400px);
+  animation: timerUp 2.2s ease forwards;
+  animation-delay: 1.4s; /* 기본값 */
+}
+.fadein{
+  display: inline-block;
+  opacity: 0;
+  animation: fade 1.7s ease forwards;
+  animation-delay: 1.4s; /* 기본값 */
+}
+
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes timerUp {
+  from {
+    opacity: 0;
+    transform: translateY(400px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ani-weather {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: weatherUp 1s ease forwards;
+  animation-delay: 1.4s; /* 기본값 */
+}
+
+.ani-slide {
+  display: inline-block;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slide 1.5s ease forwards;
+  animation-delay: 1.4s; /* 기본값 */
+}
+
+@keyframes weatherUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+.delay-1 { animation-delay: 7.4s; }
+.delay-2 { animation-delay: 7.7s; }
+.delay-3 { animation-delay: 8.0s; }
+.delay-4 { animation-delay: 8.5s; }
+
 //애니메이션
 @keyframes bounce {
   0% {
@@ -127,6 +234,7 @@ input[type="checkbox"] {
     margin-top: 0;
   }
 }
+
 
 
 //애니메이션
