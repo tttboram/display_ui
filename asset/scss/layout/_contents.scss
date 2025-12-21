@@ -16,14 +16,14 @@
   align-items: center;
   width: 8832px;
   height: 864px;
-  background: url(/asset/image/weather.png) repeat-x;
+  background: url("../../asset/image/weather.png") repeat-x;
 }
 .panel-b{
   display: flex;
   align-items: center;
   width: 10368px;
   height: 864px;
-  background: url(/asset/image/weather.png) repeat-x;
+  background: url("../../asset/image/weather.png") repeat-x;
 }
 .board{
   position: relative;
@@ -291,12 +291,12 @@
 }
 .wicon{
   &.sun{
-    background: url("/asset/image/icon_sunny.svg") no-repeat 50% 50%;
+    background: url("../../asset/image/icon_sunny.svg") no-repeat 50% 50%;
     background-size: 68px 68px;
     animation: rotate 8s linear infinite;
   }
   &.cloud{
-    background: url("/asset/image/icon_cloud.svg") no-repeat 50% 50%;
+    background: url("../../asset/image/icon_cloud.svg") no-repeat 50% 50%;
     background-size: 88px 56px;
   }
   &.partly{
@@ -308,7 +308,7 @@
       left: 0;
       width: 64px;
       height: 64px;
-      background: url("/asset/image/icon_sunny.svg") no-repeat 50% 50%;
+      background: url("../../asset/image/icon_sunny.svg") no-repeat 50% 50%;
       background-size: 64px 64px;
       animation: rotate 8s linear infinite;
       z-index: 11;
@@ -321,7 +321,7 @@
       display: inline-block;
       width: 90px;
       height: 56px;
-      background: url("/asset/image/icon_cloud.svg") no-repeat 50% 50%;
+      background: url("../../asset/image/icon_cloud.svg") no-repeat 50% 50%;
       background-size: 90px 56px;
       z-index: 22;
     }
