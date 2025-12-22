@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>DISPLAY</title>
   <link rel="stylesheet" href="../asset/css/main.css" />
+  <script src="../asset/js/lib/echarts.common.min.js"></script>
 </head>
 <body>
 <main>
@@ -21,17 +22,21 @@
         <div class="board-time">
           <div class="clock-row">
             <span class="clock-hhmm">
-              <span class="ani-time delay-1">1</span><span class="ani-time delay-2">1</span>
+              <span class="ani-time delay-1">0</span><span class="ani-time delay-2">4</span>
               <span class="var fadein delay-4 ">:</span>
-              <span class="ani-time delay-1">2</span><span class="ani-time delay-2">7</span></span>
+              <span class="ani-time delay-1">4</span><span class="ani-time delay-2">4</span></span>
             <span class="clock-ampm fadein delay-4">AM</span>
           </div>
         </div>
 
         <div class="board-today" >
-          <div class="weather-row" style="opacity: 0;">
+          <div class="weather-row">
             <div class="weather-icon ani-weather delay-3">
-              <div class="wicon sun size-m"></div>
+              <div class="wicon rainy size-m">
+                <span class="drop"></span>
+                <span class="drop"></span>
+                <span class="drop"></span>
+              </div>
             </div>
             <div class="weather-text ani-weather delay-2">맑음</div>
             <div class="weather-text-en ani-weather delay-1">Sunny</div>
@@ -40,7 +45,7 @@
             <div class="day-today ani-weather delay-1">화요일, 9월 23일</div>
             <div class="day-today-en ani-weather delay-4">Tuesday, 9 Sep 23</div>
           </div>
-          <div class="dust-row" style="opacity: 0;">
+          <div class="dust-row">
             <div class="dust-item ani-weather delay-2">
               <span class="dust-label">미세먼지</span>
               <span class="dust-value">21</span>
@@ -56,7 +61,7 @@
       </div>
 
       <div class="board board-weather fade-stage">
-        <div class="temp-row" style="opacity: 0;">
+        <div class="temp-row">
           <div class="temp-num">
             <span class="ani-time delay-1">2</span>
             <span class="ani-time delay-2">2</span>
@@ -83,11 +88,12 @@
           </div>
 
           <div class="chart-row" >
-            chart
+            <!-- chart --> 
+            <div id="chart-container"></div>
           </div>
 
           <!-- 시간대별 -->
-          <div class="hourly-row" style="opacity: 0;">
+          <div class="hourly-row">
             <div class="hour-item">
               <div class="ani-slide">
                 <div class="wicon size-s sun"></div>
@@ -114,7 +120,11 @@
 
             <div class="hour-item">
               <div class="ani-slide">
-                <div class="wicon size-s partly"></div>
+                <div class="wicon size-s rainy">
+                  <span class="drop"></span>
+                  <span class="drop"></span>
+                  <span class="drop"></span>
+                </div>
               </div>
               <div class="h-temp">18°</div>
               <div class="h-time">오후 4시</div>
@@ -142,8 +152,42 @@
     </div>
 
   </div>
-
 </main>
-</body>
 
+<script>
+  var dom = document.getElementById('chart-container');
+  var myChart = echarts.init(dom, null, {
+    renderer: 'svg',
+    useDirtyRect: false
+  });
+  var app = {};
+
+
+  var option;
+
+  option = {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        smooth: true
+      }
+    ]
+  };
+
+
+  if (option && typeof option === 'object') {
+    myChart.setOption(option);
+  }
+
+  window.addEventListener('resize', myChart.resize);
+</script>
+</body>
 </html>

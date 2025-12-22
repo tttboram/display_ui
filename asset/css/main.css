@@ -3,7 +3,6 @@
    v5.0.2 | 20191019
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@100;300;400;500;700;800;900&display=swap");
 @import url("/asset/scss/utils/_mixin.scss");
 @import url("/asset/scss/utils/_vars.scss");
 @import url("/asset/scss/utils/_mixin.scss");
@@ -720,7 +719,6 @@ input[type=checkbox]:checked + label:after {
   align-items: center;
   width: 8832px;
   height: 864px;
-  background: url("../image/weather.png") repeat-x;
 }
 
 .panel-b {
@@ -728,7 +726,6 @@ input[type=checkbox]:checked + label:after {
   align-items: center;
   width: 10368px;
   height: 864px;
-  background: url("../image/weather.png") repeat-x;
 }
 
 .board {
@@ -748,7 +745,7 @@ input[type=checkbox]:checked + label:after {
 }
 .board.board-now {
   margin-left: 860px;
-  gap: 70px;
+  gap: 40px;
 }
 .board.board-weather {
   margin-left: 2275px;
@@ -770,11 +767,13 @@ input[type=checkbox]:checked + label:after {
 }
 .board .clock-row .clock-hhmm {
   overflow: hidden;
-  font-size: 504px;
+  font-size: 450px;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.03em;
   font-family: "Inter";
+  text-align: center;
+  width: 100%;
 }
 .board .clock-row .clock-hhmm .var {
   line-height: 300px;
@@ -988,13 +987,66 @@ input[type=checkbox]:checked + label:after {
 }
 
 .wicon.sun {
-  background: url("../../asset/image/icon_sunny.svg") no-repeat 50% 50%;
+  background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
   background-size: 68px 68px;
   animation: rotate 8s linear infinite;
+  margin-top: -15px;
 }
 .wicon.cloud {
-  background: url("../../asset/image/icon_cloud.svg") no-repeat 50% 50%;
+  background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
   background-size: 88px 56px;
+}
+.wicon.rainy {
+  background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
+  background-size: 88px 56px;
+}
+.wicon.rainy .drop {
+  position: absolute;
+  width: 20px;
+  height: 32px;
+  background: url("../image/icon_drop.svg") no-repeat 50% 50%;
+  background-size: 20px 32px;
+}
+.wicon.rainy .drop:nth-child(1) {
+  top: 80px;
+  left: 10px;
+}
+.wicon.rainy .drop:nth-child(2) {
+  top: 70px;
+  left: 40px;
+}
+.wicon.rainy .drop:nth-child(3) {
+  top: 60px;
+  left: 70px;
+}
+.wicon.rainy.size-m {
+  width: 110px;
+  height: 70px;
+  background-size: contain;
+}
+.wicon.rainy.size-s {
+  width: 88px;
+  height: 88px;
+  background-size: contain;
+}
+.wicon.rainy.size-s .drop {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  background: url("../image/icon_drop.svg") no-repeat 50% 50%;
+  background-size: 10px 16px;
+}
+.wicon.rainy.size-s .drop:nth-child(1) {
+  top: 80px;
+  left: 10px;
+}
+.wicon.rainy.size-s .drop:nth-child(2) {
+  top: 75px;
+  left: 30px;
+}
+.wicon.rainy.size-s .drop:nth-child(3) {
+  top: 70px;
+  left: 50px;
 }
 .wicon.partly {
   position: relative;
@@ -1023,9 +1075,46 @@ input[type=checkbox]:checked + label:after {
   background-size: 90px 56px;
   z-index: 22;
 }
+.wicon.partly.size-m {
+  width: 132px;
+  height: 132px;
+  background-size: contain;
+}
+.wicon.partly.size-m::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 94px;
+  height: 94px;
+  background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
+  background-size: 94px 94px;
+  animation: rotate 8s linear infinite;
+  z-index: 11;
+}
+.wicon.partly.size-m::after {
+  content: "";
+  position: absolute;
+  top: 30px;
+  left: 0;
+  display: inline-block;
+  width: 132px;
+  height: 84px;
+  background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
+  background-size: 132px 84px;
+  z-index: 22;
+}
 .wicon.size-l {
   width: 200px;
   height: 200px;
+  background-size: contain;
+}
+.wicon.size-l::before {
+  content: "";
+  background-size: contain;
+}
+.wicon.size-l::after {
+  content: "";
   background-size: contain;
 }
 .wicon.size-m {
