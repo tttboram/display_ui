@@ -47,7 +47,7 @@
   box-shadow: -5px -5px 250px 0 rgba(255, 255, 255, 0.02) inset;
   &.board-now{
     margin-left: 860px;
-    gap: 40px;
+    gap: 100px;
   }
   &.board-weather{
     margin-left: 2275px;
@@ -59,13 +59,11 @@
     border: none;
     backdrop-filter: none;
   }
-  .board-time{}
   .clock-row{
     display: flex;
-    gap: 50px;
+    gap: 30px;
     justify-content: flex-end;
     align-items: baseline;
-    width: 1500px;
     .clock-hhmm{
       overflow: hidden;
       font-size: 450px;
@@ -74,7 +72,7 @@
       letter-spacing: -0.03em;
       font-family: "Inter";
       text-align: center;
-      width: 100%;
+      /* width: 100%; */
       .var{
         line-height: 300px;
         display: inline-block;

@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>DISPLAY</title>
   <link rel="stylesheet" href="../asset/css/main.css" />
+  <script src="../asset/js/lib/jquery-2.2.4.min.js"></script>
   <script src="../asset/js/lib/echarts.common.min.js"></script>
 </head>
 <body>
@@ -22,9 +23,9 @@
         <div class="board-time">
           <div class="clock-row">
             <span class="clock-hhmm">
-              <span class="ani-time delay-1">0</span><span class="ani-time delay-2">4</span>
+              <span class="ani-time hour1 delay-1">0</span><span class="ani-time hour2 delay-2">4</span>
               <span class="var fadein delay-4 ">:</span>
-              <span class="ani-time delay-1">4</span><span class="ani-time delay-2">4</span></span>
+              <span class="ani-time minute1 delay-1">4</span><span class="ani-time minute2 delay-2">4</span></span>
             <span class="clock-ampm fadein delay-4">AM</span>
           </div>
         </div>
@@ -155,6 +156,71 @@
 </main>
 
 <script>
+  $(document).ready(function() {
+    function updateClock() {
+   
+
+      const now = new Date();
+
+      // 1. 날짜 정보 (연-월-일)
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1; // 월은 0부터 시작하므로 +1
+      const date = now.getDate();
+
+      const monthList_en = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      const monthName_en = monthList_en[now.getMonth()];
+
+      // 2. 요일 정보 (한글 변환)
+      const dayList = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+      const dayList_en = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      const dayName = dayList[now.getDay()];
+      const dayName_en = dayList_en[now.getDay()];
+
+      // 3. 시간 정보 (12시간제 및 AM/PM)
+      let hours = now.getHours();
+
+      const minutes = String(now.getMinutes()).padStart(2, '0'); // 두 자리 유지
+      let minute1 = minutes.substr(0, 1);
+      let minute2 = minutes.substr(1, 2);
+
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      // 12시간제로 변환
+      hours = hours % 12;
+      hours = hours ? hours : 12; // 0시일 경우 12로 표시
+
+      const hours_tmp = String(hours).padStart(2, '0'); // 두 자리 유지
+      let hours1 = hours_tmp.substr(0, 1);
+      let hours2 = hours_tmp.substr(1, 2);
+
+      console.log(`현재 시간: ${ampm} ${hours1}${hours2}:${minute1}${minute2}:${seconds}`);
+
+      $(".ani-time.hour1").text(hours1);
+      $(".ani-time.hour2").text(hours2);
+
+      $(".ani-time.minute1").text(minute1);
+      $(".ani-time.minute2").text(minute2);
+      
+      $(".clock-ampm").text(ampm);
+
+      let dateStr = dayName + ', ' + month + '월 ' + date + '일';
+      $(".day-today").text(dateStr);
+      let dateStr_en = dayName_en + ', ' + month + ' ' + monthName_en + ' ' + date;
+      $(".day-today-en").text(dateStr_en);
+
+      // 결과 출력
+      console.log(`현재 날짜: ${year}년 ${month}월 ${date}일 (${dayName})`);
+      console.log(`현재 시간: ${ampm} ${hours}:${minutes}:${seconds}`);
+     }
+
+     // 페이지 로드 시 즉시 실행 후 1초마다 반복
+      updateClock();
+      setInterval(updateClock, 1000);
+
+  });
+</script>
+<script>
   var dom = document.getElementById('chart-container');
   var myChart = echarts.init(dom, null, {
     renderer: 'svg',
@@ -166,18 +232,29 @@
   var option;
 
   option = {
+    backgroundColor: 'transparent',
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+       show: false,
+       axisLabel: { show: false },
+      axisTick: { show: false },
+      axisLine: { show: false }
     },
     yAxis: {
-      type: 'value'
+      type: 'value',
+      show: false
     },
     series: [
       {
         data: [820, 932, 901, 934, 1290, 1330, 1320],
         type: 'line',
-        smooth: true
+        smooth: true,
+        symbol: 'none',
+        lineStyle: {
+          color: '#ffffff',
+          width: 3
+        }
       }
     ]
   };
@@ -189,5 +266,15 @@
 
   window.addEventListener('resize', myChart.resize);
 </script>
+<style>
+
+#chart-container {
+  position: relative;
+  height: 230px;
+  width: 1200px;
+  overflow: hidden;
+}
+
+</style>
 </body>
 </html>
