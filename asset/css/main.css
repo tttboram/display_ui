@@ -745,7 +745,7 @@ input[type=checkbox]:checked + label:after {
 }
 .board.board-now {
   margin-left: 860px;
-  gap: 40px;
+  gap: 100px;
 }
 .board.board-weather {
   margin-left: 2275px;
@@ -760,10 +760,9 @@ input[type=checkbox]:checked + label:after {
 }
 .board .clock-row {
   display: flex;
-  gap: 50px;
+  gap: 30px;
   justify-content: flex-end;
   align-items: baseline;
-  width: 1500px;
 }
 .board .clock-row .clock-hhmm {
   overflow: hidden;
@@ -773,7 +772,7 @@ input[type=checkbox]:checked + label:after {
   letter-spacing: -0.03em;
   font-family: "Inter";
   text-align: center;
-  width: 100%;
+  /* width: 100%; */
 }
 .board .clock-row .clock-hhmm .var {
   line-height: 300px;
@@ -807,6 +806,11 @@ input[type=checkbox]:checked + label:after {
   height: 114px;
   vertical-align: middle;
   display: inline-block;
+}
+.board .weather-row .weather-icon .size-m {
+  max-width: 140px;
+  max-height: 140px;
+  margin-top: -10px;
 }
 .board .weather-row .weather-text {
   font-size: 110px;
@@ -889,12 +893,12 @@ input[type=checkbox]:checked + label:after {
   transform: translateY(0);
 }
 .board .temp-row .temp-condition .condition-kr {
-  font-size: 50px;
+  font-size: 60px;
   color: #fff;
   font-weight: 300;
 }
 .board .temp-row .temp-condition .condition-en {
-  font-size: 50px;
+  font-size: 60px;
   color: #fff;
   font-weight: 300;
 }
@@ -985,145 +989,14 @@ input[type=checkbox]:checked + label:after {
   color: rgba(255, 255, 255, 0.86);
   font-family: "Inter";
 }
-
-.wicon.sun {
-  background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
-  background-size: 68px 68px;
-  animation: rotate 8s linear infinite;
-  margin-top: -15px;
+.board .timeline-cell .w-icon {
+  width: 108px;
+  height: 108px;
+  vertical-align: middle;
+  display: flex;
+  align-content: center;
 }
-.wicon.cloud {
-  background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-  background-size: 88px 56px;
-}
-.wicon.rainy {
-  background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-  background-size: 88px 56px;
-}
-.wicon.rainy .drop {
-  position: absolute;
-  width: 20px;
-  height: 32px;
-  background: url("../image/icon_drop.svg") no-repeat 50% 50%;
-  background-size: 20px 32px;
-}
-.wicon.rainy .drop:nth-child(1) {
-  top: 80px;
-  left: 10px;
-}
-.wicon.rainy .drop:nth-child(2) {
-  top: 70px;
-  left: 40px;
-}
-.wicon.rainy .drop:nth-child(3) {
-  top: 60px;
-  left: 70px;
-}
-.wicon.rainy.size-m {
-  width: 110px;
-  height: 70px;
-  background-size: contain;
-}
-.wicon.rainy.size-s {
-  width: 88px;
-  height: 88px;
-  background-size: contain;
-}
-.wicon.rainy.size-s .drop {
-  position: absolute;
-  width: 10px;
-  height: 16px;
-  background: url("../image/icon_drop.svg") no-repeat 50% 50%;
-  background-size: 10px 16px;
-}
-.wicon.rainy.size-s .drop:nth-child(1) {
-  top: 80px;
-  left: 10px;
-}
-.wicon.rainy.size-s .drop:nth-child(2) {
-  top: 75px;
-  left: 30px;
-}
-.wicon.rainy.size-s .drop:nth-child(3) {
-  top: 70px;
-  left: 50px;
-}
-.wicon.partly {
-  position: relative;
-}
-.wicon.partly::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 64px;
-  height: 64px;
-  background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
-  background-size: 64px 64px;
-  animation: rotate 8s linear infinite;
-  z-index: 11;
-}
-.wicon.partly::after {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 0;
-  display: inline-block;
-  width: 90px;
-  height: 56px;
-  background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-  background-size: 90px 56px;
-  z-index: 22;
-}
-.wicon.partly.size-m {
-  width: 132px;
-  height: 132px;
-  background-size: contain;
-}
-.wicon.partly.size-m::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 94px;
-  height: 94px;
-  background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
-  background-size: 94px 94px;
-  animation: rotate 8s linear infinite;
-  z-index: 11;
-}
-.wicon.partly.size-m::after {
-  content: "";
-  position: absolute;
-  top: 30px;
-  left: 0;
-  display: inline-block;
-  width: 132px;
-  height: 84px;
-  background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-  background-size: 132px 84px;
-  z-index: 22;
-}
-.wicon.size-l {
-  width: 200px;
-  height: 200px;
-  background-size: contain;
-}
-.wicon.size-l::before {
-  content: "";
-  background-size: contain;
-}
-.wicon.size-l::after {
-  content: "";
-  background-size: contain;
-}
-.wicon.size-m {
-  width: 132px;
-  height: 132px;
-  background-size: contain;
-}
-.wicon.size-s {
-  width: 88px;
-  height: 88px;
-  background-size: contain;
+.board .timeline-cell .w-icon .size-s {
+  max-width: 108px;
+  max-height: 108px;
 }/*# sourceMappingURL=main.css.map */

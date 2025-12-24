@@ -46,11 +46,11 @@
   border: 2px solid #ffffff26;
   box-shadow: -5px -5px 250px 0 rgba(255, 255, 255, 0.02) inset;
   &.board-now{
-    width: 3840px;
+    margin-left: 860px;
     gap: 100px;
   }
   &.board-weather{
-    width: 4992px;
+    margin-left: 2275px;
     gap: 150px;
   }
   &.board-clock{
@@ -106,6 +106,11 @@
       height: 114px;
       vertical-align: middle;
       display: inline-block;
+      .size-m{
+        max-width:140px;
+        max-height:140px;
+        margin-top: -10px;
+      }
     }
     .weather-text{
       font-size: 110px;
@@ -193,12 +198,12 @@
     }
     .temp-condition{
       .condition-kr{
-        font-size: 50px;
+        font-size: 60px;
         color: #fff;
         font-weight: 300;
       }
       .condition-en{
-        font-size: 50px;
+        font-size: 60px;
         color: #fff;
         font-weight: 300;
       }
@@ -293,152 +298,16 @@
       color: rgba(255,255,255,0.86);
       font-family: "Inter";
     }
-  }
-}
-.wicon{
-  &.sun{
-    background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
-    background-size: 68px 68px;
-    animation: rotate 8s linear infinite;
-    margin-top: -15px;
-  }
-  &.cloud{
-    background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-    background-size: 88px 56px;
-  }
-  &.rainy{
-    background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-    background-size: 88px 56px;
-    .drop{
-      position: absolute;
-      width: 20px;
-      height: 32px;
-      background: url("../image/icon_drop.svg") no-repeat 50% 50%;
-      background-size: 20px 32px;
-      &:nth-child(1){   
-        top:80px;
-        left: 10px;
-      }
-      &:nth-child(2){   
-        top:70px;
-        left: 40px;
-      }
-      &:nth-child(3){   
-        top:60px;
-        left: 70px;
+    .w-icon{
+      width: 108px;
+      height: 108px;
+      vertical-align: middle;
+      display: flex;
+      align-content: center;
+      .size-s{
+        max-width: 108px;
+        max-height: 108px;
       }
     }
-    &.size-m{
-      width: 110px;
-      height: 70px;
-      background-size: contain;
-    }
-    &.size-s{
-      width: 88px;
-      height: 88px;
-      background-size: contain;
-
-      .drop{
-        position: absolute;
-        width: 10px;
-        height: 16px;
-        background: url("../image/icon_drop.svg") no-repeat 50% 50%;
-        background-size: 10px 16px;
-        &:nth-child(1){   
-          top:80px;
-          left: 10px;
-        }
-        &:nth-child(2){   
-          top:75px;
-          left: 30px;
-        }
-        &:nth-child(3){   
-          top:70px;
-          left: 50px;
-        }
-      }
-    }
-  }
-  &.partly{
-      position: relative;
-    &::before{
-      content:"";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 64px;
-      height: 64px;
-      background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
-      background-size: 64px 64px;
-      animation: rotate 8s linear infinite;
-      z-index: 11;
-    }
-    &::after{
-      content:"";
-      position: absolute;
-      top: 15px;
-      left: 0;
-      display: inline-block;
-      width: 90px;
-      height: 56px;
-      background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-      background-size: 90px 56px;
-      z-index: 22;
-    }
-
-    &.size-m{
-      width: 132px;
-      height: 132px;
-      background-size: contain;
-
-    &::before{
-      content:"";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 94px;
-      height: 94px;
-      background: url("../image/icon_sunny.svg") no-repeat 50% 50%;
-      background-size: 94px 94px;
-      animation: rotate 8s linear infinite;
-      z-index: 11;
-    }
-    &::after{
-      content:"";
-      position: absolute;
-      top: 30px;
-      left: 0;
-      display: inline-block;
-      width: 132px;
-      height: 84px;
-      background: url("../image/icon_cloud.svg") no-repeat 50% 50%;
-      background-size: 132px 84px;
-      z-index: 22;
-    }
-    }
-  }
-  
-  &.size-l{
-    width: 200px;
-    height: 200px;
-    background-size: contain;
-    &::before{
-      content:"";
-      background-size: contain;
-    }
-    &::after{
-      content:"";
-      background-size: contain;
-    }
-  }
-  &.size-m{
-    width: 132px;
-    height: 132px;
-    background-size: contain;
-  }
-  &.size-s{
-    width: 88px;
-    height: 88px;
-    background-size: contain;
   }
 }
