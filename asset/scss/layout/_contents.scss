@@ -46,11 +46,11 @@
   border: 2px solid #ffffff26;
   box-shadow: -5px -5px 250px 0 rgba(255, 255, 255, 0.02) inset;
   &.board-now{
-    margin-left: 860px;
+    width: 3840px;
     gap: 100px;
   }
   &.board-weather{
-    margin-left: 2275px;
+    width: 4992px;
     gap: 150px;
   }
   &.board-clock{
