@@ -811,6 +811,8 @@ input[type=checkbox]:checked + label:after {
   max-width: 140px;
   max-height: 140px;
   margin-top: -10px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .board .weather-row .weather-text {
   font-size: 110px;
@@ -874,7 +876,6 @@ input[type=checkbox]:checked + label:after {
   flex-direction: column;
   gap: 20px;
   text-align: center;
-  margin-left: 120px;
 }
 .board .temp-row .temp-num {
   font-size: 440px;
@@ -892,10 +893,15 @@ input[type=checkbox]:checked + label:after {
   left: calc(50% + 50px);
   transform: translateY(0);
 }
+.board .temp-row .temp-condition {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
 .board .temp-row .temp-condition .condition-kr {
   font-size: 60px;
   color: #fff;
-  font-weight: 300;
+  font-weight: 500;
 }
 .board .temp-row .temp-condition .condition-en {
   font-size: 60px;
@@ -964,6 +970,15 @@ input[type=checkbox]:checked + label:after {
 .board .timeline-cell .chart-row {
   margin-top: 8px;
   height: 230px;
+  opacity: 1;
+}
+.board .timeline-cell .chart-row #chart-container {
+  position: relative;
+  height: 230px;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 .board .timeline-cell .hourly-row {
   display: grid;
@@ -982,6 +997,7 @@ input[type=checkbox]:checked + label:after {
   font-size: 38px;
   font-weight: 400;
   color: #3F3F3F;
+  font-family: "Roboto";
 }
 .board .timeline-cell .h-time {
   font-size: 28px;
@@ -999,4 +1015,6 @@ input[type=checkbox]:checked + label:after {
 .board .timeline-cell .w-icon .size-s {
   max-width: 108px;
   max-height: 108px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }/*# sourceMappingURL=main.css.map */

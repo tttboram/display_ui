@@ -7,7 +7,6 @@
   <title>DISPLAY</title>
   <link rel="stylesheet" href="../asset/css/main.css" />
   <script src="../asset/js/lib/jquery-2.2.4.min.js"></script>
-  <script src="../asset/js/lib/echarts.common.min.js"></script>
 </head>
 <body>
 <main>
@@ -33,7 +32,14 @@
         <div class="board-today" >
           <div class="weather-row">
             <div class="weather-icon ani-weather delay-3">
-              <img src="../asset/image/icon/icon_snow.gif" alt="" class="size-m">
+              <!-- <img src="../asset/image/icon/icon_snow.gif" alt="" class="size-m"> -->
+              <!-- <img src="../asset/image/icon/icon_sun.gif" alt="" class="size-m"> -->
+              <img src="../asset/image/icon/icon_sun_cloud.gif" alt="" class="size-m">
+              <!-- <img src="../asset/image/icon/icon_cloud.gif" alt="" class="size-m"> -->
+              <!-- <img src="../asset/image/icon/icon_flash.gif" alt="" class="size-m"> -->
+              <!-- <img src="../asset/image/icon/icon_moon.gif" alt="" class="size-m"> -->
+              <!-- <img src="../asset/image/icon/icon_moon_cloud.gif" alt="" class="size-m"> -->
+              <!-- <img src="../asset/image/icon/icon_rain.gif" alt="" class="size-m"> -->
             </div>
             <div class="weather-text ani-weather delay-2">맑음</div>
             <div class="weather-text-en ani-weather delay-1">Sunny</div>
@@ -224,7 +230,10 @@
 
   });
 </script>
+
+<script src="../asset/js/lib/echarts.common.min.js"></script>
 <script>
+ 
   var dom = document.getElementById('chart-container');
   var myChart = echarts.init(dom, null, {
     renderer: 'svg',
@@ -236,31 +245,81 @@
   var option;
 
   option = {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
+    grid: {
+      left: 5,
+      right: 5,
+      top: 20,
+      bottom: 20,
+      containLabel: false
+    },
+    
     xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-       show: false,
-       axisLabel: { show: false },
+      type: "category",
+      boundaryGap: false,
+      data: ["AM10", "AM12", "PM2", "PM4", "PM6", "PM8"],
+      show: false,
+      axisLabel: { show: false },
       axisTick: { show: false },
-      axisLine: { show: false }
+      axisLine: { show: false },
     },
     yAxis: {
-      type: 'value',
-      show: false
+      type: "value",
+      show: false,
     },
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line',
+        symbolSize: 3,
+        data: [
+          15, 
+          {
+            value: 21,
+            itemStyle: { color: '#FFFFFF' }, // 강조 포인트
+            symbolSize: 80,
+            label: {
+              show: true,
+              textAlign: 'center',
+              fontFamily: 'Roboto', 
+              fontSize: 50,      // ★ 이 포인트만 크게
+              lineHeight: 50,
+              color: '#000000',
+              position: 'inside',
+              
+
+              // (선택) 라벨 배경도 함께 부드럽게
+              backgroundColor: '#ffffff',
+              padding: [14, 14],
+              borderRadius: 40,
+
+              shadowBlur: 25,
+              shadowColor: 'rgba(255, 255, 255, 0.5)',
+              shadowOffsetX: 0,
+              shadowOffsetY: 0
+            }
+          },
+          18, 
+          16, 
+          23, 
+          15],
+        type: "line",
+        areaStyle: {
+          color: 'rgba(57, 192, 233, 0.3)',
+        },
         smooth: true,
-        symbol: 'none',
+        clip: false,
+        itemStyle: {
+          color: '#FFFFFF'   // 포인트 색상
+        },
         lineStyle: {
-          color: '#ffffff',
-          width: 3
-        }
-      }
-    ]
+          color: "#ffffff",
+          width: 6,
+          shadowBlur: 18,
+          shadowColor: 'rgba(255, 255, 255, 0.5)',
+          shadowOffsetX: 0,
+          shadowOffsetY: 6,
+        },
+      },
+    ],
   };
 
 
@@ -270,15 +329,5 @@
 
   window.addEventListener('resize', myChart.resize);
 </script>
-<style>
-
-#chart-container {
-  position: relative;
-  height: 230px;
-  width: 1200px;
-  overflow: hidden;
-}
-
-</style>
 </body>
 </html>
