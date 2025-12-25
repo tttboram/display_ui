@@ -893,6 +893,24 @@ input[type=checkbox]:checked + label:after {
   left: calc(50% + 50px);
   transform: translateY(0);
 }
+.board .temp-row .temp-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 700px;
+  height: 500px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board .temp-row .temp-icon .size-l {
+  max-width: 700px;
+  max-height: 700px;
+  margin-top: -10px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
 .board .temp-row .temp-condition {
   display: flex;
   justify-content: center;

@@ -196,6 +196,23 @@
       left: calc(50% + 50px);
       transform: translateY(0);
     }
+    .temp-icon{
+      position: absolute;
+      top:0;
+      left:0;
+      width: 700px;
+      height: 500px;
+      vertical-align: middle;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .size-l{
+        max-width: 700px;
+        max-height: 700px;
+        margin-top: -10px;
+        object-fit: contain;
+      }
+    }
     .temp-condition{
       display: flex;
       justify-content: center;
