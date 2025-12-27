@@ -66,7 +66,7 @@
     align-items: baseline;
     .clock-hhmm{
       overflow: hidden;
-      font-size: 450px;
+      font-size: 440px;
       font-weight: 600;
       color:#fff;
       letter-spacing: -0.03em;
@@ -187,13 +187,14 @@
       line-height: 370px;
       position: relative;
       display: inline-block;
+      min-width: 650px;
     }
     .dosi{
       overflow: hidden;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      left: calc(50% + 50px);
+      position: relative;
+      width: 150px;
+      letter-spacing: 0.7em;
+      margin-left: 0;
       transform: translateY(0);
     }
     .temp-icon{
@@ -253,10 +254,10 @@
   .timeline-cell{
     display: flex;
     flex-direction: column;
-    margin-right: 120px;
+    margin-right: 70px;
     gap: 10px;
     padding-bottom: 20px;
-    padding-left: 50px;
+    padding-left: 0;
     .timeline-row{
       justify-content: space-between;
       width: 1200px;
@@ -295,7 +296,7 @@
         position: relative;
         height: 230px;
         width: 100%;
-        overflow: hidden;
+        overflow: visible;
         padding: 0; 
         margin: 0;
       }

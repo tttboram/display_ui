@@ -16,7 +16,7 @@
     <!-- B: 10368*864 -->
     <div class="panel-b">
       <!-- background video -->
-      <video class="bg_mov2" src="../asset/image/bg_part1.mp4" width="10368px" height="864px" autoplay muted></video>
+      <video class="bg_mov2" src="../asset/image/bg_part2.mp4" width="10368px" height="864px" autoplay muted></video>
 
       <div class="board board-now fade-stage">
         <div class="board-time">
@@ -41,8 +41,8 @@
               <!-- <img src="../asset/image/icon/icon_moon_cloud.gif" alt="" class="size-m"> -->
               <!-- <img src="../asset/image/icon/icon_rain.gif" alt="" class="size-m"> -->
             </div>
-            <div class="weather-text ani-weather delay-2">맑음</div>
-            <div class="weather-text-en ani-weather delay-1">Sunny</div>
+            <div class="weather-text ani-weather delay-2"></div>
+            <div class="weather-text-en ani-weather delay-1"></div>
           </div>
           <div class="day-row">
             <div class="day-today ani-weather delay-1">화요일, 9월 23일</div>
@@ -180,7 +180,7 @@
 </main>
 
 <script>
-  $(document).ready(function() {
+  //////// 시간 및 날짜 ////////////
     function updateClock() {
    
 
@@ -218,32 +218,50 @@
       let hours1 = hours_tmp.substr(0, 1);
       let hours2 = hours_tmp.substr(1, 2);
 
-      console.log(`현재 시간: ${ampm} ${hours1}${hours2}:${minute1}${minute2}:${seconds}`);
-
-      $(".ani-time.hour1").text(hours1);
-      $(".ani-time.hour2").text(hours2);
-
-      $(".ani-time.minute1").text(minute1);
-      $(".ani-time.minute2").text(minute2);
+      const board_time = document.querySelector('.board-time');
+      let any_times = board_time.querySelectorAll('.ani-time');
       
-      $(".clock-ampm").text(ampm);
+      any_times[0].innerHTML = hours1;
+      any_times[1].innerHTML = hours2;
+
+      any_times[2].innerHTML = minute1;
+      any_times[3].innerHTML = minute2;
+      
+      board_time.querySelector('.clock-ampm').innerHTML = ampm;
+
+      const board_clock = document.querySelector('.board-clock');
+      let any_times2 = board_clock.querySelectorAll('.ani-time');
+      
+      any_times2[0].innerHTML = hours1;
+      any_times2[1].innerHTML = hours2;
+
+      any_times2[2].innerHTML = minute1;
+      any_times2[3].innerHTML = minute2;
+
+      board_clock.querySelector('.clock-ampm').innerHTML = ampm;
+
+      const board_today = document.querySelector('.board-today');
+      const board_today2 = document.querySelector('.timeline-row');
 
       let dateStr = dayName + ', ' + month + '월 ' + date + '일';
-      $(".day-today").text(dateStr);
+      board_today.querySelector('.day-today').innerHTML = dateStr;
+      board_today2.querySelector('.date-kr').innerHTML = dateStr;
+
       let dateStr_en = dayName_en + ', ' + month + ' ' + monthName_en + ' ' + date;
-      $(".day-today-en").text(dateStr_en);
+      board_today.querySelector('.day-today-en').innerHTML = dateStr_en;
+      board_today2.querySelector('.date-en').innerHTML = dateStr_en;
 
       // 결과 출력
-      console.log(`현재 날짜: ${year}년 ${month}월 ${date}일 (${dayName})`);
-      console.log(`현재 시간: ${ampm} ${hours}:${minutes}:${seconds}`);
+      // console.log(`현재 날짜: ${year}년 ${month}월 ${date}일 (${dayName})`);
+      // console.log(`현재 시간: ${ampm} ${hours}:${minutes}:${seconds}`);
      }
 
      // 페이지 로드 시 즉시 실행 후 1초마다 반복
       updateClock();
       setInterval(updateClock, 1000);
-
-  });
 </script>
+
+<script src="../asset/js/woori.js?ver=1.1"></script>
 <script src="../asset/js/lib/echarts.common.min.js"></script>
 
 <script>
@@ -261,10 +279,10 @@
   option = {
     backgroundColor: "transparent",
     grid: {
-      left: 5,
-      right: 5,
-      top: 25,
-      bottom: 25,
+      left: 70,
+      right: 70,
+      top: 35,
+      bottom: 35,
       containLabel: false
     },
     
@@ -280,44 +298,28 @@
     yAxis: {
       type: "value",
       show: false,
+       min: function (value) {
+          return value.min - 10;   // 아래 여백
+        },
+        max: function (value) {
+          return value.max + 8;   // 위 여백
+        }
     },
     series: [
       {
-        symbolSize: 3,
+        symbolSize: 0,
         data: [
-          15, 
-          {
-            value: 21,
-            itemStyle: { color: '#FFFFFF' }, // 강조 포인트
-            symbolSize: 100,
-            label: {
-              show: true,
-              textAlign: 'center',
-              fontFamily: 'Roboto', 
-              fontSize: 50,      // ★ 이 포인트만 크게
-              lineHeight: 50,
-              color: '#000000',
-              position: 'inside',
-              
-              formatter: '{c}°',
-
-              // (선택) 라벨 배경도 함께 부드럽게
-              backgroundColor: '#ffffff',
-              padding: [14, 14],
-              borderRadius: 40,
-
-              shadowBlur: 25,
-              shadowColor: 'rgba(255, 255, 255, 0.5)',
-              shadowOffsetX: 0,
-              shadowOffsetY: 0
-            }
-          },
-          18, 
-          16, 
-          23, 
-          15],
+          0, 
+          0,
+          0, 
+          0, 
+          0, 
+          0],
         type: "line",
+        clip: false,
+        smooth: true, // 라벨 잘림 방지
         areaStyle: {
+          origin: 'start',   // 무조건 아래로 채우기
           color: 'rgba(57, 192, 233, 0.3)',
         },
         smooth: true,
@@ -330,8 +332,8 @@
           width: 6,
           shadowBlur: 18,
           shadowColor: 'rgba(255, 255, 255, 0.5)',
-          shadowOffsetX: 0,
-          shadowOffsetY: 6,
+          shadowOffsetX: 8,
+          shadowOffsetY: 8,
         },
       },
     ],
@@ -343,6 +345,264 @@
   }
 
   window.addEventListener('resize', myChart.resize);
+
+
+  /////////////
+  //////// 날씨 API 연동 ////////////////////////////
+  //////////
+  function updateChartWithHighlight(rawData, curHourIdx) {
+    const formattedData = rawData.map((val, index) => {
+      const n = rawData.length;
+      const isFirst = index === 0;
+      const isLast = index === n - 1;
+      const isCurrent = index === curHourIdx;
+      
+      const numVal = Number(val);
+
+      if (!isCurrent) return numVal;
+
+      if (index === curHourIdx) { 
+        return {
+          value: val,
+          itemStyle: { color: '#FFFFFF' }, // 강조 포인트
+          label: {
+            show: true,
+            distance: -15,
+            textAlign: 'center',
+            verticalAlign: 'middle',
+            fontFamily: 'Roboto', 
+            fontSize: 50,      // ★ 이 포인트만 크게
+            letterSpacing: -2,
+            color: '#000000',
+            position: 'inside',
+            //position: isFirst ? 'right' : isLast ? 'left' : 'top',
+            // ★ offset도 첫/끝/중간에 맞춰 자동 변경 
+            offset: isFirst ? [70, -10] : isLast ? [-70, -10] : [0, -10],
+            
+            formatter: '{c}°',
+
+            // (선택) 라벨 배경도 함께 부드럽게
+            backgroundColor: '#ffffff',
+            width: 100,
+            height: 100,
+            lineHeight: 100,
+            borderRadius: 50,
+
+            shadowBlur: 25,
+            shadowColor: 'rgba(255, 255, 255, 0.5)',
+            shadowOffsetX: 0,
+            shadowOffsetY: 0
+          }
+        };
+      }
+      // 일반 데이터는 숫자만 반환
+      return val; 
+    });
+
+    myChart.setOption({
+      series: [{
+        data: formattedData
+      }]
+    });
+  }
+
+    // const res = getVilageBaseTime();
+    // console.log(`단기예보 요청값: 날짜 ${res.baseDate}, 시각 ${res.baseTime}`);
+
+    async function fetchWeatherData() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const todayStr = `${year}${month}${day}`;
+
+        // 1. 현재 실황 조회 (초단기실황)
+        // 실황은 매시각 40분 이후에 생성됩니다.
+        let baseTime = now.getHours() + "00";
+        if (now.getMinutes() < 45) {
+            baseTime = (now.getHours() - 1) + "00";
+        }
+        
+        const ncstUrl = `${API_URL}/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst?serviceKey=${SERVICE_KEY}&pageNo=1&numOfRows=1000&dataType=JSON&base_date=${todayStr}&base_time=${baseTime.padStart(4, '0')}&nx=${NX}&ny=${NY}`;
+
+        // 2. 단기 예보 조회 (08시~20시 정보를 위해 05시 발표 데이터 사용)
+        const fcstUrl = `${API_URL}/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${SERVICE_KEY}&pageNo=1&numOfRows=200&dataType=JSON&base_date=${todayStr}&base_time=0500&nx=${NX}&ny=${NY}`;
+
+        try {
+            // 현재 실황 데이터 처리
+            const ncstRes = await fetch(ncstUrl);
+            const ncstData = await ncstRes.json();
+            const ncstItems = ncstData.response.body.items.item;
+            // const T1H = ncstItems.find(i => i.category === 'T1H').obsrValue; // 기온
+            // const PTY = ncstItems.find(i => i.category === 'PTY').obsrValue; // 강수형태
+            
+
+            const items = ncstData.response.body.items.item;
+
+            // 현재 시간과 가장 가까운 예보 시각을 현재 날씨로 사용 (HH00 포맷)
+            const hours = now.getHours();
+
+            let weatherInfo = {
+                T1H: '', // 기온
+                SKY: '', // 하늘상태
+                PTY: ''  // 강수형태
+            };
+            
+            const earliestTime = items[0].fcstTime; 
+            items.forEach(item => {
+                // 특정 시간이 아니라, API가 제공하는 가장 빠른 예보 시각의 데이터를 추출
+                if (item.fcstTime === earliestTime) {
+                    if (['T1H', 'SKY', 'PTY'].includes(item.category)) {
+                        weatherInfo[item.category] = item.fcstValue;
+                    }
+                }
+            });
+
+            console.log(`--- [${todayStr} ${baseTime} 기준 날씨] ---`);
+            console.log(`기온: ${weatherInfo.T1H}°C`);
+            console.log(`하늘상태: ${skyMap[weatherInfo.SKY] || '정보없음'}`);
+
+            console.log(`현재 기온: ${weatherInfo.T1H}, 현재 상태 : ${getWeatherStatusLabel(weatherInfo.SKY, weatherInfo.PTY, hours)}`);
+
+            if (weatherInfo.PTY !== '0') {
+                console.log(`강수형태: ${ptyMap[weatherInfo.PTY]}`);
+            }
+            
+            // 영상 설정
+            let mediaName = getWeatherMediaName(1, weatherInfo.SKY, weatherInfo.PTY, hours);
+            console.log(`영상파일: ${mediaName}`);
+            const videoElement = document.querySelector('video');
+            videoElement.src = `../asset/${mediaName}`;
+            videoElement.load(); // 새로운 소스를 적용하기 위해 호출
+            videoElement.play(); // 자동 재생 (브라우저 정책에 따라 음소거(muted)가 필요할 수 있음)
+
+            const board_today = document.querySelector('.board-today');
+
+            let gif = getWeatherGif(weatherInfo.SKY, weatherInfo.PTY, hours);
+            console.log(`gif : ${gif}`);
+
+            board_today.querySelector('.weather-icon').innerHTML = `<img src="../asset/image/icon/${gif}" alt="" class="size-m">`;
+
+
+            board_today.querySelector('.weather-text').innerHTML = getWeatherStatusLabel(weatherInfo.SKY, weatherInfo.PTY);
+            board_today.querySelector('.weather-text-en').innerHTML = getWeatherStatusLabel_En(weatherInfo.SKY, weatherInfo.PTY);
+
+            let ani_times = document.querySelector('.temp-row').querySelectorAll('.ani-time');
+            const res_temp = splitTemperature(weatherInfo.T1H);
+
+            ani_times[0].innerHTML = `${res_temp.sign}${res_temp.tens || ''}`;
+            ani_times[1].innerHTML = res_temp.units;
+
+            // 단기 예보 데이터 처리
+            const fcstRes = await fetch(fcstUrl);
+            const fcstData = await fcstRes.json();
+            const fcstItems = fcstData.response.body.items.item;
+
+
+            let weatherData = [];
+            // 10:00부터 20:00까지 필터링
+            for (let h = 10; h <= 20; h++) {
+                if((h % 2) != 0)
+                    continue;
+                const timeStr = String(h).padStart(2, '0') + "00";
+
+                // 초단기 예보에서 우선 찾고 없을 경우 단기예보 데이터에서 찾음.
+                let sky = ncstItems.find(i => i.fcstTime === timeStr && i.category === 'SKY')?.fcstValue;
+                if(sky === undefined)
+                  sky = fcstItems.find(i => i.fcstTime === timeStr && i.category === 'SKY')?.fcstValue;
+                
+                let pty = ncstItems.find(i => i.fcstTime === timeStr && i.category === 'PTY')?.fcstValue;
+                if(pty === undefined)
+                  pty = fcstItems.find(i => i.fcstTime === timeStr && i.category === 'PTY')?.fcstValue;
+
+                let tmp = ncstItems.find(i => i.fcstTime === timeStr && i.category === 'T1H')?.fcstValue;
+                if(tmp === undefined)
+                  tmp = fcstItems.find(i => i.fcstTime === timeStr && i.category === 'TMP')?.fcstValue;
+
+                weatherData.push({
+                  hour : `${h}`,
+                  sky : `${getWeatherGif(sky, pty, h)}`,
+                  tmp : `${tmp}`
+                });
+            }
+            
+            console.log(weatherData);
+            var tmpOnly = weatherData.map(function(item) {
+              return item.tmp;
+            });
+
+            console.log(tmpOnly); 
+
+            const recentTime = getRecentTime();
+            console.log(`현재 시간 기준 가장 가까운 타임슬롯: ${recentTime}시`);
+            const index = timeSlots.indexOf(recentTime);
+
+            //const timeSlots1 = [29, 32, 33, 36, 34, 30];
+            updateChartWithHighlight(tmpOnly, index);
+
+            const elements = document.querySelectorAll('.hour-item');
+            elements.forEach((el, index) => {
+                el.querySelector('.h-temp').innerHTML = tmpOnly[index] + '°';
+                el.querySelector('.w-icon').innerHTML = `<img src="../asset/image/icon/${weatherData[index].sky}" alt="" class="size-s">`;
+            });
+
+        } catch (error) {
+            console.error("데이터 로드 실패:", error);
+        }
+    }
+
+    fetchWeatherData();
+  
+
+    ////// 대기정보 /////////////////
+    async function fetchDnstyData() {
+        ////////////// 대기정보 /////////////////
+      const pmGradeNameList = ['매우좋음', '좋음', '보통', '나쁨', '매우나쁨'];
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      const hours = String(now.getHours()).padStart(2, '0');
+      const dateKye = year + '.' + month + '.' + day + '.' + hours;
+
+      const dnstyUrl = `${API_URL}/B552584/ArpltnInforInqireSvc/getMsrstnAcctoRltmMesureDnsty?serviceKey=d62feb6b3e43fb95f2af9e228f7f4e93a33f37778489afa4c8d0c40e15524af6&returnType=json&numOfRows=100&pageNo=1&stationName=%EC%A2%85%EB%A1%9C%EA%B5%AC&dataTerm=DAILY&ver=1.0&dateKey=${dateKye}`;
+
+      try {
+          // 현재 실황 데이터 처리
+          const dnstyRes = await fetch(dnstyUrl);
+          const dnstyData = await dnstyRes.json();
+          
+          if(dnstyData.response.body.totalCount > 0){
+            var item = dnstyData.response.body.items[dnstyData.response.body.totalCount - 1];
+            console.log(item);
+
+            const board_today = document.querySelector('.board-today');
+            let dust_items = board_today.querySelector('.dust-row').querySelectorAll('.dust-item')
+
+            const temp_row = document.querySelector('.temp-dust');
+            let dust_items2 = temp_row.querySelectorAll('.dust-item');
+
+            var pm10Grade = item.pm10Grade;
+            var pm10Value = item.pm10Value;
+            dust_items[0].querySelector('.dust-value').innerHTML = pm10Value;
+            dust_items[0].querySelector('.dust-grade').innerHTML = pmGradeNameList[pm10Grade];
+            dust_items2[0].innerHTML = `<b>미세먼지</b> <i>${pm10Value}</i> ${pmGradeNameList[pm10Grade]}`
+
+            var pm25Grade = item.pm25Grade;
+            var pm25Value = item.pm25Value;
+            dust_items[1].querySelector('.dust-value').innerHTML = pm25Value;
+            dust_items[1].querySelector('.dust-grade').innerHTML = pmGradeNameList[pm25Grade];
+            dust_items2[1].innerHTML = `<b>미세먼지</b> <i>${pm25Value}</i> ${pmGradeNameList[pm25Grade]}`
+            
+          }
+              
+      } catch (error) {
+          console.error("데이터 로드 실패:", error);
+      }
+    }
+
+    fetchDnstyData();
+
 </script>
 </body>
 
